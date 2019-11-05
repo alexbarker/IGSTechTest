@@ -25,4 +25,3 @@ C:\Users\alexb\Desktop\IGSTechTest\IGSTechTest\obj\Debug\netcoreapp3.0\IGSTechTe
 C:\Users\alexb\Desktop\IGSTechTest\IGSTechTest\obj\Debug\netcoreapp3.0\IGSTechTest.csproj.CopyComplete
 C:\Users\alexb\Desktop\IGSTechTest\IGSTechTest\obj\Debug\netcoreapp3.0\IGSTechTest.dll
 C:\Users\alexb\Desktop\IGSTechTest\IGSTechTest\obj\Debug\netcoreapp3.0\IGSTechTest.pdb
-C:\Users\alexb\Desktop\IGSTechTest\IGSTechTest\obj\Debug\netcoreapp3.0\IGSTechTest.csprojAssemblyReference.cache
