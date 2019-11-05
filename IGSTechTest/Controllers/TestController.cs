@@ -11,7 +11,7 @@ namespace IGSTechTest.Controllers
         [HttpGet("api/user")]
         public IActionResult Get()
         {
-            return Ok(new {name = "alex"});
+            return Ok(new { name = "alex" });
         }
 
     }
