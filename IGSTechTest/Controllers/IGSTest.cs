@@ -7,5 +7,6 @@ namespace IGSTechTest.Controllers
 {
     public class IGSTest
     {
+        //Test
     }
 }
