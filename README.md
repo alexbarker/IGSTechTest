@@ -2,7 +2,7 @@
 
 | Windows Build |
 | ------------- |
-| [![Build status](https://ci.appveyor.com/api/projects/status/0kx5h9htkqyjo84v/branch/master?svg=true)](https://ci.appveyor.com/project/alexbarker/igstechtest/branch/master) |  |
+| [![Build status](https://ci.appveyor.com/api/projects/status/r3ey4aj9ie7s1jpd/branch/master?svg=true)](https://ci.appveyor.com/project/alexbarker/igstechtest/branch/master) |  |
 
 [![forthebadge](https://forthebadge.com/images/badges/winter-is-coming.svg)](https://forthebadge.com)
 
