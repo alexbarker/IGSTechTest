@@ -11,7 +11,8 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("4fa1aa02-7eaa-40e0-97b9-0a643cbb171c")]
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap4")]
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-IGSTechTest-0A077544-B8E9-4268-8103-F17CE3B8CA10")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("IGSTechTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
