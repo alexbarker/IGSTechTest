@@ -18,6 +18,11 @@ Implementation of a simple back-end for an online marketplace.
 | 0.1.0 | Project Generation |
 | 0.2.0 | Skeleton Application |
 | 0.2.2 | Setup Swagger |
+| 0.3.0 | Setup Versioning |
+| 0.4.0 | Implemented GET Single Item |
+| 0.x.x | xxx |
+| 0.x.x | xxx |
+| 0.x.x | xxx |
 | 0.x.x | xxx |
 | 0.x.x | xxx |
 | 0.x.x | xxx |
