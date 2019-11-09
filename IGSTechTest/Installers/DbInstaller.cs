@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using SwaggerOptions = IGSTechTest.Options.SwaggerOptions;
 using Newtonsoft.Json;
 using IGSTechTest.Installers;
+using IGSTechTest.Services;
 
 namespace IGSTechTest.Installers
 {
@@ -32,6 +33,7 @@ namespace IGSTechTest.Installers
 
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddSingleton<IProductService, ProductService>();
         }
     }
 }

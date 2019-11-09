@@ -54,10 +54,42 @@ namespace IGSTechTest
             app.UseSwagger(option => { option.RouteTemplate = swaggerOptions.JsonRoute; });
             app.UseSwaggerUI(option => { option.SwaggerEndpoint(swaggerOptions.UIEndpoint, swaggerOptions.Description); });
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseMvc();
         }
     }
 }
+/*
+            builder.Entity<Product>().ToTable("Products");
+            builder.Entity<Product>().HasKey(p => p.Id);
+            builder.Entity<Product>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Product>().Property(p => p.Name).IsRequired().HasMaxLength(50);
+            builder.Entity<Product>().Property(p => p.Price).IsRequired();
+
+            builder.Entity<Product>().HasData
+            (
+                new Product
+                {
+                    Id = 001,
+                    Name = "Lavender Heart",
+                    Price = "£" + 9.25,
+                    ProductCode = 001
+                },
+                new Product
+                {
+                    Id = 002,
+                    Name = "Personalised Cufflinks",
+                    Price = "£" + 45.00,
+                    ProductCode = 002,
+                }
+                new Product
+                {
+                    Id = 003,
+                    Name = "Kids T-shirt",
+                    Price = "£" + 19.95,
+                    ProductCode = 003,
+                }
+            );
+*/
