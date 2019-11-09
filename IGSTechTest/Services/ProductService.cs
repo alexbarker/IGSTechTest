@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using IGSTechTest.Contracts.V1;
 using IGSTechTest.Contracts.V1.Requests;
-//using IGSTechTest.Contracts.V1.Requests.Queries;
 using IGSTechTest.Contracts.V1.Responses;
 using IGSTechTest.Domain;
 using IGSTechTest.Services;
@@ -22,14 +21,28 @@ namespace IGSTechTest.Services
         public ProductService()
         {
             _products = new List<Product>();
-            for (var i = 0; i < 5; i++)
+
+            _products.Add(new Product
             {
-                _products.Add(new Product
-                {
-                    Id = Guid.NewGuid(),
-                    Name = $"Product Name {i}"
-                });
-            }
+                Id = Guid.NewGuid(),
+                ProductCode = $"001",
+                Name = $"Lavender Heart",
+                Price = $"£9.25"
+            });
+            _products.Add(new Product
+            {
+                Id = Guid.NewGuid(),
+                ProductCode = $"002",
+                    Name = $"Personalised Cufflinks",
+                    Price = $"£45.00"
+            });
+            _products.Add(new Product
+            {
+                Id = Guid.NewGuid(),
+                ProductCode = $"003",
+                    Name = $"Kids T-shirt",
+                    Price = $"£19.95"
+            });
         }
 
         public List<Product> GetProducts()
@@ -39,6 +52,29 @@ namespace IGSTechTest.Services
         public Product GetProductById(Guid productId)
         {
             return _products.SingleOrDefault(x => x.Id == productId);
+        }
+
+        public bool UpdateProduct(Product productToUpdate)
+        {
+            var exists = GetProductById(productToUpdate.Id) != null;
+
+            if (!exists)
+                return false;
+
+            var index = _products.FindIndex(x => x.Id == productToUpdate.Id);
+            _products[index] = productToUpdate;
+            return true;
+        }
+
+        public bool DeleteProduct(Guid productId)
+        {
+            var product = GetProductById(productId);
+
+            if (product == null)
+                return false;
+
+            _products.Remove(product);
+            return true;
         }
     }
 }
