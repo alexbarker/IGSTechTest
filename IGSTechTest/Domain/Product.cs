@@ -10,14 +10,16 @@ using IGSTechTest.Contracts.V1.Requests;
 using IGSTechTest.Contracts.V1.Responses;
 using IGSTechTest.Domain;
 using IGSTechTest.Services;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IGSTechTest.Domain
 {
     public class Product
     {
-        public Guid Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
-        public string ProductCode { get; set; }
+        //public string ProductCode { get; set; }
         public string Name { get; set; }
         public string Price { get; set; }
     }

@@ -24,35 +24,43 @@ namespace IGSTechTest.Services
 
             _products.Add(new Product
             {
-                Id = Guid.NewGuid(),
-                ProductCode = $"001",
-                Name = $"Lavender Heart",
-                Price = $"£9.25"
+                Id = 1,
+                //ProductCode = $"001",
+                Name = $"Lavender heart",
+                Price = $"9.25"
             });
             _products.Add(new Product
             {
-                Id = Guid.NewGuid(),
-                ProductCode = $"002",
-                    Name = $"Personalised Cufflinks",
-                    Price = $"£45.00"
+                Id = 2,
+               // ProductCode = $"002",
+                    Name = $"Personalised cufflinks",
+                    Price = $"45.00"
             });
             _products.Add(new Product
             {
-                Id = Guid.NewGuid(),
-                ProductCode = $"003",
+                Id = 3,
+               // ProductCode = $"003",
                     Name = $"Kids T-shirt",
-                    Price = $"£19.95"
+                    Price = $"19.95"
             });
+
         }
 
         public List<Product> GetProducts()
         {
             return _products;
         }
-        public Product GetProductById(Guid productId)
+
+        public int CountProducts()
+        {
+            return _products.Count;
+        }
+
+        public Product GetProductById(int productId)
         {
             return _products.SingleOrDefault(x => x.Id == productId);
         }
+
 
         public bool UpdateProduct(Product productToUpdate)
         {
@@ -66,7 +74,7 @@ namespace IGSTechTest.Services
             return true;
         }
 
-        public bool DeleteProduct(Guid productId)
+        public bool DeleteProduct(int productId)
         {
             var product = GetProductById(productId);
 

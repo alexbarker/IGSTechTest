@@ -27,7 +27,7 @@ namespace IGSTechTest.Controllers.V1
         }
 
         [HttpGet(ApiRoutes.Products.Get)]
-        public IActionResult Get([FromRoute]Guid productId)
+        public IActionResult Get([FromRoute]int productId)
         {
             var product = _productService.GetProductById(productId);
 
@@ -38,12 +38,12 @@ namespace IGSTechTest.Controllers.V1
         }
 
         [HttpPut(ApiRoutes.Products.Update)]
-        public IActionResult Update([FromRoute]Guid productId, [FromBody] UpdateProductRequest request)
+        public IActionResult Update([FromRoute]int productId, [FromBody] UpdateProductRequest request)
         {
             var product = new Product
             {
                 Id = productId,
-                ProductCode = request.ProductCode,
+               // ProductCode = request.ProductCode,
                 Name = request.Name,
                 Price = request.Price
             };
@@ -57,7 +57,7 @@ namespace IGSTechTest.Controllers.V1
         }
 
         [HttpDelete(ApiRoutes.Products.Delete)]
-        public IActionResult Delete([FromRoute] Guid productId)
+        public IActionResult Delete([FromRoute] int productId)
         {
             var deleted = _productService.DeleteProduct(productId);
 
@@ -71,15 +71,20 @@ namespace IGSTechTest.Controllers.V1
         [HttpPost(ApiRoutes.Products.Create)]
         public IActionResult Create([FromBody] CreateProductRequest productRequest)
         {
-            var product = new Product { Id = Guid.NewGuid() };
-            
-            _productService.GetProducts().Add(product);
+                var product = new Product { Id = _productService.CountProducts() + 1, Name = "Empty", Price = "Empty" };
 
-            var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
-            var locationUri = baseUrl + "/" + ApiRoutes.Products.Get.Replace("{productId}", product.Id.ToString());
+                _productService.GetProducts().Add(product);
 
-            var response = new ProductResponse { Id = product.Id };
-            
+                var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
+                var locationUri = baseUrl + "/" + ApiRoutes.Products.Get.Replace("{productId}", product.Id.ToString());
+
+                var response = new ProductResponse { Id = product.Id, Name = product.Name, Price = product.Price };
+
+            //var updated = _productService.UpdateProduct(product);
+
+            //if (updated)
+              //  return Ok(product);
+
             return Created(locationUri, response);
         }
     }

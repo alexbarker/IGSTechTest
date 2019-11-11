@@ -13,10 +13,12 @@ namespace IGSTechTest.Services
     public interface IProductService
     {
         List<Product> GetProducts();
-        Product GetProductById(Guid productId);
+        Product GetProductById(int productId);
+
+        int CountProducts();
 
         bool UpdateProduct(Product productToUpdate);
 
-        bool DeleteProduct(Guid productId);
+        bool DeleteProduct(int productId);
     }
 }
