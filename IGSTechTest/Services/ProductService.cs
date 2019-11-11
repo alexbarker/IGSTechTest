@@ -25,23 +25,20 @@ namespace IGSTechTest.Services
             _products.Add(new Product
             {
                 Id = 1,
-                //ProductCode = $"001",
                 Name = $"Lavender heart",
                 Price = $"9.25"
             });
             _products.Add(new Product
             {
                 Id = 2,
-               // ProductCode = $"002",
-                    Name = $"Personalised cufflinks",
-                    Price = $"45.00"
+                Name = $"Personalised cufflinks",
+                Price = $"45.00"
             });
             _products.Add(new Product
             {
                 Id = 3,
-               // ProductCode = $"003",
-                    Name = $"Kids T-shirt",
-                    Price = $"19.95"
+                Name = $"Kids T-shirt",
+                Price = $"19.95"
             });
 
         }

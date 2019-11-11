@@ -71,19 +71,21 @@ namespace IGSTechTest.Controllers.V1
         [HttpPost(ApiRoutes.Products.Create)]
         public IActionResult Create([FromBody] CreateProductRequest productRequest)
         {
-                var product = new Product { Id = _productService.CountProducts() + 1, Name = "Empty", Price = "Empty" };
+            int g =  _productService.CountProducts() + 1;
 
-                _productService.GetProducts().Add(product);
+            var product = new Product
+            {
+                Id = g,
+                Name = productRequest.Name,
+                Price = productRequest.Price
+            };
+
+            _productService.GetProducts().Add(product);
 
                 var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
                 var locationUri = baseUrl + "/" + ApiRoutes.Products.Get.Replace("{productId}", product.Id.ToString());
 
                 var response = new ProductResponse { Id = product.Id, Name = product.Name, Price = product.Price };
-
-            //var updated = _productService.UpdateProduct(product);
-
-            //if (updated)
-              //  return Ok(product);
 
             return Created(locationUri, response);
         }

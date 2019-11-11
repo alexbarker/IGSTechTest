@@ -16,10 +16,10 @@ namespace IGSTechTest.Domain
 {
     public class Product
     {
+       
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        //public string ProductCode { get; set; }
         public string Name { get; set; }
         public string Price { get; set; }
     }
