@@ -1,0 +1,13 @@
+version: 1.0.{build}
+image: Visual Studio 2019
+configuration: Release
+before_build:
+- cmd: nuget restore IGSTechTest\IGSTechTest.sln
+build:
+  publish_aspnet_core: true
+  verbosity: minimal
+deploy:
+- provider: GitHub
+  auth_token:
+    secure: 1O0yqY7ub0mOLCQuN/YBdIjDYbvm/EeKsAKpBBqnRtzfyxBHLT1J9TsFwKIPxr/W
+  draft: true
