@@ -14,5 +14,8 @@ namespace IGSTechTest.Data
             : base(options)
         {
         }
+
+        public DbSet<Product> Products { get; set; }
+
     }
 }

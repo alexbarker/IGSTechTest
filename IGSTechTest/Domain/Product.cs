@@ -11,12 +11,13 @@ using IGSTechTest.Contracts.V1.Responses;
 using IGSTechTest.Domain;
 using IGSTechTest.Services;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace IGSTechTest.Domain
 {
     public class Product
     {
-       
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 

@@ -2,7 +2,7 @@
 
 namespace IGSTechTest.Data.Migrations
 {
-    public partial class AddedProducts : Migration
+    public partial class AddProduct : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,13 +16,14 @@ namespace IGSTechTest.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.Id);
-                });          
+                    table.PrimaryKey(name: "PK_Products", columns: x => x.Id);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(name: "Products");
+            migrationBuilder.DropTable(
+                name: "Products");
         }
     }
 }
