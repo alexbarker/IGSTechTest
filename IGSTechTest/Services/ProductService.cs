@@ -20,26 +20,27 @@ namespace IGSTechTest.Services
 
         public ProductService()
         {
-            _products = new List<Product>();
-
-            _products.Add(new Product
+            _products = new List<Product>
             {
-                Id = 1,
-                Name = $"Lavender heart",
-                Price = $"9.25"
-            });
-            _products.Add(new Product
-            {
-                Id = 2,
-                Name = $"Personalised cufflinks",
-                Price = $"45.00"
-            });
-            _products.Add(new Product
-            {
-                Id = 3,
-                Name = $"Kids T-shirt",
-                Price = $"19.95"
-            });
+                new Product
+                {
+                    Id = 1,
+                    Name = $"Lavender heart",
+                    Price = $"9.25"
+                },
+                new Product
+                {
+                    Id = 2,
+                    Name = $"Personalised cufflinks",
+                    Price = $"45.00"
+                },
+                new Product
+                {
+                    Id = 3,
+                    Name = $"Kids T-shirt",
+                    Price = $"19.95"
+                }
+            };
 
         }
 
@@ -47,6 +48,19 @@ namespace IGSTechTest.Services
         {
             return _products;
         }
+
+        public bool CreateProduct(Product productToCreate)
+        {
+            var exists = GetProductById(productToCreate.Id) != null;
+
+            if (!exists)
+                return false;
+
+            var index = _products.FindIndex(x => x.Id == productToCreate.Id);
+            _products[index] = productToCreate;
+            return true;
+        }
+
 
         public int CountProducts()
         {
@@ -61,14 +75,16 @@ namespace IGSTechTest.Services
 
         public bool UpdateProduct(Product productToUpdate)
         {
+
             var exists = GetProductById(productToUpdate.Id) != null;
 
             if (!exists)
                 return false;
 
             var index = _products.FindIndex(x => x.Id == productToUpdate.Id);
-            _products[index] = productToUpdate;
-            return true;
+                _products[index] = productToUpdate;
+                return true;
+
         }
 
         public bool DeleteProduct(int productId)

@@ -16,7 +16,7 @@ namespace IGSTechTest.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey(name: "PK_Products", columns: x => x.Id);
+                    table.PrimaryKey("PK_Products", x => x.Id);
                 });          
         }
 

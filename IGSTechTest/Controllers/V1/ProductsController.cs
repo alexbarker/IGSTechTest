@@ -38,15 +38,43 @@ namespace IGSTechTest.Controllers.V1
         }
 
         [HttpPut(ApiRoutes.Products.Update)]
-        public IActionResult Update([FromRoute]int productId, [FromBody] UpdateProductRequest request)
+        public IActionResult Update([FromRoute]int productId, [FromForm] UpdateProductRequest request)
         {
+            var tempProduct = _productService.GetProductById(productId);
+            if (tempProduct == null)
+            {
+                return NotFound();
+            }
+
+            var tempPrice = tempProduct.Price;
+            var tempName = tempProduct.Name;
+
             var product = new Product
             {
                 Id = productId,
-               // ProductCode = request.ProductCode,
                 Name = request.Name,
                 Price = request.Price
             };
+
+            if (product.Price == null)
+            {
+                product = new Product
+                {
+                    Id = productId,
+                    Name = product.Name,
+                    Price = tempPrice
+                };
+            }
+
+            if (product.Name == null)
+            {
+                product = new Product
+                {
+                    Id = productId,
+                    Name = tempName,
+                    Price = product.Price
+                };
+            }
 
             var updated = _productService.UpdateProduct(product);
 
@@ -62,15 +90,16 @@ namespace IGSTechTest.Controllers.V1
             var deleted = _productService.DeleteProduct(productId);
 
             if(deleted)
-                return NoContent();
+                return Ok();
 
             return NotFound();
         }
 
 
         [HttpPost(ApiRoutes.Products.Create)]
-        public IActionResult Create([FromBody] CreateProductRequest productRequest)
+        public IActionResult Create([FromForm] CreateProductRequest productRequest)
         {
+
             int g =  _productService.CountProducts() + 1;
 
             var product = new Product
@@ -87,7 +116,14 @@ namespace IGSTechTest.Controllers.V1
 
                 var response = new ProductResponse { Id = product.Id, Name = product.Name, Price = product.Price };
 
-            return Created(locationUri, response);
+
+            var updated = _productService.CreateProduct(product);
+
+            if (updated)
+                return Ok(product);
+
+            return NotFound();
+
         }
     }
 }

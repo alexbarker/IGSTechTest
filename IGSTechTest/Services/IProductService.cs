@@ -13,6 +13,8 @@ namespace IGSTechTest.Services
     public interface IProductService
     {
         List<Product> GetProducts();
+
+        bool CreateProduct(Product productToCreate);
         Product GetProductById(int productId);
 
         int CountProducts();
